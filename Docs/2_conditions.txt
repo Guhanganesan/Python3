@@ -1,0 +1,79 @@
+Conditions:-
+
+	if True:
+		print("I am Guhan")
+
+	if False:
+		print("Hey there")
+
+	state=2<3
+	if state:
+		print("Yes 2 is less than 3")
+	   
+	state=3==3
+	if state:
+	   print("Yes 3 is equal to 3")
+
+	state=2>3
+	if state:
+		print("2 is greater than 3")
+	else:
+		print("No 2 is not greater than 3")
+		
+----------------------------------------------
+
+	# AND OR NOT
+	state = 2>3 and 2==2 # 0 1  => 0
+	print(state)
+	if state:
+		print("A")  
+
+	state = 2<3 and 2==2 # 1 1 => 1
+	print(state)
+	if state:
+		print("B")
+
+	state = 2>3 and 2>2 # 0 0 => 0
+	print(state)
+	if state:
+		print("C")
+
+	state = 2<3 and 2>2 # 1 0 => 0
+	print(state)
+	if state:
+		print("D")
+
+
+--------------------------------------------
+
+	# AND OR NOT
+	state = 2>3 or 2==2 # 0 1  => 1
+	print(state)
+	if state:
+		print("A")  
+
+	state = 2<3 or 2==2 # 1 1 => 1
+	print(state)
+	if state:
+		print("B")
+
+
+	state = 2>3 or 2>2 # 0 0 => 0
+	print(state)
+	if state:
+		print("C")
+
+
+	state = 2<3 or 2>2 # 1 0 => 1
+	print(state)
+	if state:
+		print("D")
+
+------------------------------------------
+
+	# AND OR NOT
+	state = 2>3 
+	print(state)
+	if not state:
+		print("A") 
+		

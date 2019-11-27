@@ -1,0 +1,15 @@
+https://data-flair.training/blogs/file-handling-in-python/
+
+What are dynamically typed languages?
+	
+	A programming language is said to be dynamically typed, or just 'dynamic', 
+	when the majority of its type checking is performed at run-time as opposed 
+	to at compile-time. In dynamic typing, types are associated with values not variables.
+	
+Why python is interpreted?
+
+	py source code is first compiled to byte code as .pyc. This byte code can be 
+	interpreted (official CPython), or JIT compiled (PyPy). Python source code (.py) 
+	can be compiled to different byte code also like IronPython (.Net) or Jython (JVM). 
+	There are multiple implementations of Python language.
+	

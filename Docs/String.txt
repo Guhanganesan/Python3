@@ -1,0 +1,339 @@
+String:-
+	print("guhan")
+	print('don\'t use this ')
+	print("c:myfolder\\docs\\files")
+	print("his\nname\nis")
+	#raw string
+	print(r"his\nname\nis")
+	print("""
+		  Dear Sir,
+				 I am Guhan.
+				 How are you
+	""")
+	print("""
+		  <html>
+				<bdoy>
+
+				</body>
+		  </html>
+	""")
+	print("A"*4)
+	print("A" "B") #concatenated
+	print("A"
+		  "B"
+		  "C")
+	print("A"+"B")
+
+----------------------------------------------
+
+	x="QWERTY"
+	print(x)        #QWERTY
+	print(x[0])     #Q
+	print(x[-1])    #Y
+	print(x[1])     #W
+	print(x[1:])    #includes 1
+	print(x[:4])    #omits 4
+	print(x[::-1])  #REVERSE THE STRING
+	print(x[1:5])   #WERT
+	print(x[-3:-1]) #RT
+	print(x[3:]+x[:3]) #RTYQWE
+	
+-----------------------------------------------
+
+	print(ord('a')) #unicode values , chr to unicode
+	x=chr(ord('a')+1) #unicode to char
+	print(x)
+
+	#char to bytes
+
+	m='d'
+	# char to bytes
+	n=bytes(m[0],'utf-8') # Unicode Transformation Format
+
+	print(n) #it says bytes d ans: b'd
+
+	#convert bytes into string
+
+	s=str(n)
+	print(s[0]) #b
+	print(s[1]) #'
+	print(s[2]) #d
+
+	data="abcd"
+
+	mynewdata=bytes(data,'utf-8')
+	print(mynewdata)  #b'abcd'
+
+-----------------------------------------------------------
+String Methods:-
+
+	x="QWERTY"
+
+	print(len(x))
+
+	print(x.lower())
+
+	print(x.upper())
+
+	print(x.capitalize())
+
+	print(x.swapcase()) #if lower means upper, upper means lower
+
+	print(x.center(8,'_'))
+
+	print(x.count('Q'))
+
+	print(x.find('W')) # found 1
+
+	print(x.find('Z')) # not found -1
+
+	print(x.index('E'))
+
+	s=("A","B","C","D")
+	print("-".join(s))
+
+	data="---ABCD   --- ABCD  ---"
+	print(data.strip())
+	print(data.lstrip("-"))
+	print(data.rstrip("-"))
+	print(data.strip("-")) #strip both left and right
+
+	print(x.split()) #list of substring
+
+	print(x.replace("Q","P"))
+
+	"""    6
+		qwerty
+		QWERTY
+		Qwerty
+		qwerty
+		_QWERTY_
+		1
+		1
+		-1
+		2
+		A-B-C-D
+		---ABCD   --- ABCD  ---
+		ABCD   --- ABCD  ---
+		---ABCD   --- ABCD
+		ABCD   --- ABCD
+		['QWERTY']
+		PWERTY
+	"""
+-------------------------------------------
+Concatenate:-
+	def concat(x):
+		print("Hello "+x+"!")
+	concat('Guhan')
+
+Abba:-
+
+	def concat(x,y):
+		print(x+y*2+x)
+	concat('a','b')
+
+Create tags:-
+
+	def create(x,y):
+		print("<"+x+">"+y+"</"+x+">")
+
+	create('p','Hi I am Guhan')
+
+
+	x="QWERTY"
+	length=len(x)
+	for i in range(0,length):
+		   print(x[i])
+
+	for i in x:
+		print(i)
+
+	i=0
+	while i<length:
+		print(x[i])
+		i+=1
+-------------------------------------------
+Count Characters:-
+
+x="He is my dear friend"
+count=0
+for i in range(0, len(x)):
+    if x[i]=='e':
+        count+=1
+print(count)
+
+
+-------------------------------------------
+A-Z:-
+
+print(chr(97)) # a
+
+print(ord("a")) #97
+
+for i in range(97,123):
+    print(chr(i))       # result is a-z
+	
+-------------------------------------------
+
+Arrange Alphabetical order:-
+
+	x="friend"
+	s=list(x) # string to char array
+	print(s)
+	temp=''
+	length=len(s)
+	for i in range(0,length):
+		for j in range(0, length):
+				if ord(s[i])<ord(s[j]):
+						 temp=s[i]
+						 s[i]=s[j]
+						 s[j]=temp
+	print(s)
+
+
+	x="he is my dear friend"
+	s=x.split()
+	print(s)
+
+	temp=''
+	length=len(s)
+	for i in range(0,length):
+		for j in range(0, length):
+				if ord(s[i][0])<ord(s[j][0]):
+						 temp=s[i]
+						 s[i]=s[j]
+						 s[j]=temp
+	print(s)
+
+---------------------------------------------------
+
+Character Puzzle:-
+
+# if 'ckr' means 'emt'
+# whats is 'tek'?
+# 'c'+2 => 'e'
+# 'k'+2 => 'm'
+# 'r'+2 => 't'
+
+	x='tek'
+	s=list(x)
+	print(s)
+	temp=0
+	strng=''
+	for i in range(0,len(s)):
+		if s[i]=='t':
+		   temp=ord(s[i])+2
+		   strng=strng+chr(temp)
+		elif s[i]=='e':
+		   temp=ord(s[i])+2
+		   strng=strng+chr(temp)
+		elif s[i]=='k':
+		   temp=ord(s[i])+2
+		   strng=strng+chr(temp) 
+	   
+----------------------------------------------
+
+Largest word:-
+
+	x="he is my dear friend ranjith"
+	s=x.split()
+	print(s)
+	length=len(s)
+	temp=""
+	for i in range(0,length):
+		for j in range(0,length):
+			if len(s[i])<len(s[j]):
+				  temp=s[i]
+				  s[i]=s[j]
+				  s[j]=temp
+				
+	print(s[length-1])
+
+
+	x="he is my dear friend ranjith"
+	s=x.split()
+	length=len(s)
+	temp=""
+	for i in range(0,length):
+		  if len(s[i])>len(temp):
+				  temp=s[i]
+				
+	print(temp) 
+
+---------------------------------------------------
+Palindrome:-
+
+	# check with index based
+
+	x="malayalam"
+
+	length=len(x)-1
+	count=0
+	temp=''
+
+	while length>=0:
+		if x[length]==x[count]:
+			temp=temp+x[count]
+			count+=1
+			length-=1
+		elif x[length]!=x[count]:
+			break
+
+	if x==temp:
+		print("Given String is Palindrome")
+	else:
+		print("Not palindrome")
+	
+------------------------------------------------
+Maximum Characters:-
+
+x="malayalamvigadan"
+length=len(x)-1
+acount=0
+bcount=2
+temp=''
+for i in range(0, length):
+    for j in range(1, length):
+        if x[i]==x[j]:
+           acount+=1
+           temp=x[j]
+           if acount>bcount: #1>2,2>2,3>2
+               bcount=acount #3
+               temp=x[j]     
+    acount=0  
+
+print("Max repated char is: ",temp)
+print("And count is :",bcount)
+
+---------------------------------------------------
+
+Remove Duplicates:-
+
+	x="anandham"
+	s=list(x)
+	print(s)
+	length=len(s)
+	i=0
+	while(i<=length):
+		for j in range(i+1,length):
+			if s[i]==s[j]:
+			   s.pop(j)
+			   i=i-1
+			   length=length-1
+			   break
+		i=i+1
+	print(s) 
+
+----------------------------------------------------
+Reverse:-
+
+	x="Guhan"
+	length=len(x)-1
+	temp=''
+	while length>=0:
+		  temp=temp+x[length]
+		  length-=1
+
+	print(temp)
+
+----------------------------------------------------

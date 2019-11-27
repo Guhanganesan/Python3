@@ -1,0 +1,99 @@
+The JAVA control statements inside a program are usually executed sequentially. Sometimes a programmer wants to break the normal flow and jump to another statement or execute a set of statements repeatedly. The statements which breaks the normal sequential flow of the program are called control statements.
+Control statements enables decision making, looping and branching.
+
+--------------------------------------------------------
+
+DECISION MAKING STATEMENTS:
+	If then
+	If then else
+	switch
+LOOPS:
+Statements inside a loop are executed repeatedly provided with some condition which terminates the loop.
+
+	for
+	while
+	do while
+BRANCHING STATEMENTS:
+Branching statements are used to jump from the current executing loop.
+
+	break
+	continue
+
+-----------------------------------------------------
+if:-
+	if 2==2: print("True") 
+
+	print("True") if 2>2 else print("False")
+
+	print("A") if 2>2 else print("B") if 2==2 else print("C")
+
+-------------------------------------------------------
+If then else:
+
+	name="guhan"
+	if name=="guhan":
+		print("His name is Guhan")
+
+	print("Enter Salary")
+	salary =input()
+	salary=int(salary)
+	if salary==0 or salary<0:
+		print("sholud be greater than zero")
+
+	elif salary>0 and salary<1000:
+		print("Give 10% bonus")
+
+	else:
+		print("give 30% bonus")
+
+		
+-------------------------------------------------------
+
+while:-
+
+i=10
+while i>=1:
+    print(i)
+    i-=1
+    if i==5:
+        print("Hi")
+        #continue
+        break
+    
+	
+--------------------------------------------------------
+	for i in range(5):
+		print(i)        #01234
+
+	for i in range(5):
+		print(i)
+
+	for i in range(3,6):
+		#print(i) #3,4,5
+
+	for i in (0,3,2,4):
+		print(i)
+
+	for i in [1,2,3,4]:
+		print(i)
+
+	for i in range(0,-6,-1):
+		print(i)  #0,-1,-2,-3,-4,-5
+
+
+	for i in range(0,10,2):
+		print(i) #0,2,4,6,8
+	
+----------------------------------------
+Pass:
+
+	for i in range(0,6):
+		pass
+	for i in range(6,10):
+		print(i) 			#6,7,8,9
+	
+	
+----------------------------------------
+
+
+

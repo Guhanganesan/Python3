@@ -1,0 +1,37 @@
+Python Input/Output:-
+
+Input:-
+
+data1 = input("Enter Values")
+print(data1)
+
+""" In python raw_input was removed. You should be used input() rather than the raw input.
+    There are nothing differences between input() and raw_input, but you should focus on input. 
+    In Python 2.7, raw_input() returns a string, and input() tries to run the input as a Python expression."""
+
+print(eval("3+5"))
+
+-------------------------------
+
+
+Output:-
+
+	#Formatting string
+	print("He has {}, {} note".format(10,"rupees"))
+
+	print("{1},{0},{2}".format(10,20,30))
+
+	name="guhan"
+
+	print("his name is %s" %(name))
+
+	#for raw data
+	print("his name is %r" %(name))
+
+	#similarly int - %d, float %f
+	
+	print("His name is {name}".format(name="Guhan"))
+
+	
+
+	

@@ -1,0 +1,24 @@
+Exception Handling:
+	Three Types of ErrorS:
+	1. Compile Time Errors
+	2. Logical Errors
+	3. Run Time Errors
+	
+Syntax Errors(Syntactical Errors-->complie time errors)
+
+
+
+2+4==5 -> Logical Errors
+
+Run Time Errors -> Users giving a wrong input ex: 4/0
+
+Compile time error is easy
+
+print(a+b) --> statement
+                  |->normal (will not give any error)
+				  |->critical()
+				  
+				  
+
+
+
