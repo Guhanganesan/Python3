@@ -7,5 +7,7 @@ print(data1)
 
 print(eval("3+5"))
 
+#For morethan one input
 
-
+x,y=input("Enter Values").split()
+print(x+y)
