@@ -11,3 +11,11 @@ print(eval("3+5"))
 
 x,y=input("Enter Values").split()
 print(x+y)
+
+
+from sys import stdin, stdout
+
+print("Enter Number")
+x=stdin.readline()
+
+stdout.write(x)
