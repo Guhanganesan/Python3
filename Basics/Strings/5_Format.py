@@ -35,3 +35,8 @@ print(String1)
 String1 = "{0:.2f}".format(1/6) 
 print("\none-sixth is : ") 
 print(String1) 
+
+# String alignment 
+String1 = "|{:<10}|{:^10}|{:>10}|".format('Geeks','for','Geeks') 
+print("\nLeft, center and right alignment with Formatting: ") 
+print(String1) 
