@@ -5,3 +5,12 @@ path=os.getcwd()
 dir=os.listdir(path) #[stores as list]
 for i in dir:
 	print(i)
+
+"""
+OR
+
+import os
+dir=os.listdir() #[stores as list]
+for i in dir:
+	print(i)
+"""
