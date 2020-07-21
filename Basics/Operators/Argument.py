@@ -5,7 +5,7 @@ parser.add_argument("y", help="Enter number 2")
 args = parser.parse_args()
 print(args.x+args.y)
 """
-B:\Python2020-master\Basics\Operators>python Argument.py 10 20
+B:\Python2020-main\Basics\Operators>python Argument.py 10 20
 1020
 """
 
