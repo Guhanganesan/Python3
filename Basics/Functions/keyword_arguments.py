@@ -16,11 +16,11 @@ register(10, 20, "Guhan", "guhan@gmail.com")
 
 #----------------------------
 
-def regDetails(**kwars):
+def reg_details(**kwars):
     #print(kwars)
     for key, value in kwars.items():
         print(key, value)
 
-regDetails(name="Guhan", age =25, mobile=97971, area="Chennai")
+reg_details(name="Guhan", age =25, mobile=97971, area="Chennai")
 
 
