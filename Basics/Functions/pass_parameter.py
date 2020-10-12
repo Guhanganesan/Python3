@@ -27,6 +27,3 @@ class Test:
 obj = Test()
 obj.add(50,70)
 obj.__str__()
-
-
-
