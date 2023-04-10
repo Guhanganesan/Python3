@@ -21,7 +21,7 @@ MyName="Guhan"
 
 name="Anbu"
 myName="Kannan" #camel case
-my_name="Sakthi" # pascal case
+my_name="Sakthi" # snake_case
 
 my_email_id="guhan@gmail.com"
 myEmailId="sdjhd@gmail.com"
