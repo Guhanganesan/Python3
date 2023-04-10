@@ -13,9 +13,7 @@ Python is an interpreted, object-oriented, high-level programming language.
 3. Complex Numbers (complex):These are an extension of the familiar real number system in which all numbers are expressed as a sum of a real part and an imaginary part.
 4.  0b or 0B for binary (base 2)
 5.  0o or 0O for octal (base 8)
-6.  0x or 0X for hex (base 16)
-
-
+6.  0x or 0X for hex (base 16) 
 
 
 
