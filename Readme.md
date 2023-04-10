@@ -14,6 +14,3 @@ Python is an interpreted, object-oriented, high-level programming language.
 4.  0b or 0B for binary (base 2)
 5.  0o or 0O for octal (base 8)
 6.  0x or 0X for hex (base 16) 
-
-
-
