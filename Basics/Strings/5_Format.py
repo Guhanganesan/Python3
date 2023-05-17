@@ -20,7 +20,7 @@ for i in range(1,11):
 
 
 
-brightness_4
+# brightness_4
 # Formatting of Integers 
 String1 = "{0:b}".format(16) 
 print("\nBinary representation of 16 is ") 

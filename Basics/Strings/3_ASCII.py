@@ -4,8 +4,10 @@ print(chr(100))
 x=chr(ord('a')+1) #unicode to char
 print(x)
 
+"""
 "KRVB"=>"MTYD"
 "GSAK"=>"IUCM"
+"""
 
 s=input("Enter String")
 temp=""
