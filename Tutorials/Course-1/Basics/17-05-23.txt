@@ -1,0 +1,89 @@
+[1,2,3,4,5] = [1,3,6,10,15]
+
+[23,45,67,89] = [89,45,67,23] Swap 1st and last 
+
+["Apple", "Dinosar", "Ball","Cat"] = find largest Dinosar
+
+=====
+
+1 to 4 = [(1,1),(2,4),(3,9),(4,16)]
+
+x =[(num, num*num) for num in range(1,5)]
+
+print(x)
+
+
+"""
+[3,6,2,4,7,1,5] => 7 
+
+
+1 to 4 = [(1,1),(2,4),(3,9),(4,16)]
+
+1 to 6 = [1,4,9,16,25,36]
+
+"""
+
+my_list=[]
+
+def find_num(args, i):
+    # sq => sum and sum<10 store in a list and display at last 
+    #print(args)
+    
+    temp=0 #sum of digits
+    num = args
+    while num>0:
+        rem= num%10
+        temp=temp+rem 
+        num=num//10
+    if temp<10:
+        my_list.append() #[(i, temp)......]
+
+
+for i in range(1,20):
+    sq =  i*i 
+    find_num(sq, i)
+    
+print(my_list)
+
+============================
+
+
+
+my_list = []
+
+def sum_of_digit(i, a):
+    
+    num = a 
+    sum_=0
+
+    while num>0:
+        rem= num%10
+        sum_=sum_+rem 
+        num=num//10
+    
+    if sum_ < 10:
+        my_list.append({i:sum_})
+
+# sum_of_digit(num) # function call
+
+for i in range(1, 20):
+    sq = i*i 
+    sum_of_digit(i, sq)
+    
+print(my_list)
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+

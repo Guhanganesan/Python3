@@ -38,8 +38,3 @@ for i in range(0,len(s)):
     temp=temp+x
     
 print(temp)
-
-
-
-
-

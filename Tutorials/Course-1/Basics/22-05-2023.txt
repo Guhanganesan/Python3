@@ -1,0 +1,175 @@
+"""
+1. function definition and call 
+2. Scope (global, local)
+3. built-in functions , sum(), max(), min(), pow(), ceil(), floor() ......
+4. passing arguments and return value
+5. optional parameters
+6. recursion
+
+"""
+
+
+def add():
+    x=10 
+    y=20
+    c=x+y  
+    print(c)
+    
+add()
+
+===========================
+
+x=10 
+y=20
+def add():
+    c=x+y  
+    print(c)
+    
+add()
+
+===========================
+
+"""
+x=10 
+y=20
+L=[]
+L.append(x)
+L.append(y)
+def add():
+    c=sum(L)
+    print(c)
+    
+add()
+
+==============================
+
+x=10 # global 
+y=20
+def add():
+    x=0 #local if not UnboundLocalError: local variable 'x' referenced before assignment
+    x=x+y  
+    print(x) 
+add()
+
+==============================
+
+x=10 # global 
+y=20
+def add():
+    global x 
+    x=x+y  
+    print(x) 
+add()
+
+print(x)
+
+==============================
+
+# Arbitray
+def add(m, n): # TypeError: add() takes 0 positional arguments but 2 were given
+    c=m+n 
+    print(c) 
+add(10, 20)
+
+
+===============================
+
+
+# find average => total , total/(no of elements)
+
+tamil = 65 
+eng = 70 
+
+avg = (tamil+eng)//2
+
+print(avg)
+
+def total(x,y):
+    return x+y  
+res = total(tamil, eng)
+
+def average(total, no_of):
+    return total//no_of
+    
+av = average(res, 2)
+print(av)
+
+=================================
+
+# find average => total , total/(no of elements)
+
+tamil = 65 
+eng = 70 
+
+def total(x,y):
+    return x+y  
+
+
+def average(m,n,no_of):
+    sum_ = total(m,n) # function call
+    return sum_//no_of
+    
+av = average(tamil,eng,2)
+print(av)
+
+
+===================================
+
+
+# optional parameters
+
+def add(a, b, c=None, d=None): # c and d are optional but a and b are required parameters
+    
+    if a and b and not(c):
+        print(a+b)
+        
+    elif a and b and c:
+        print(a+b+c)
+    
+#add(10) # TypeError: add() missing 1 required positional argument: 'b'
+
+#add(10,20) : 30
+#add(10,20,30) :60
+#add(10,20,30,40) :100
+
+=======================================
+
+# Recursion without looping 
+
+def countdown(num): # 5,4,3,2,1,0
+    if num<0:
+        return 
+    else:
+        print(num)
+        num=num-1
+        countdown(num)
+
+countdown(5)
+
+
+=======================================
+
+# Recursion without looping 
+
+def countdown(num): # 5,4,3,2,1,0
+    if num<0: #feature
+        return 
+    else:
+        print(num)
+        num=num-1 #present
+        countdown(num)
+
+countdown(5) #past
+
+
+===========================================
+
+
+
+
+
+
+
+
+
+

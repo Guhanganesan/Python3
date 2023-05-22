@@ -1,0 +1,104 @@
+my_list = []
+
+for i in range(1, 20):
+
+    num = i*i 
+    
+    sum_= 0
+
+    while num>0:
+        rem= num%10
+        sum_=sum_+rem 
+        num=num//10
+    
+    if sum_ < 10:
+        my_list.append({i:sum_})
+        
+        
+print(my_list)
+You
+7:17 AM
+L=[1,2,3,4,5]
+
+emp_list=[]
+
+"""
+1 = 0  + 1 = 1
+
+2 = 1 + 2  = 3 
+
+3 = 3 + 3  = 6
+
+4 = 6 + 4 = 10 
+""" 
+temp=0 
+
+for i in range(0, len(L)):
+    temp = temp+L[i]
+    emp_list.append(temp)
+    
+print(emp_list)
+You
+7:22 AM
+L= [23,45,67,89]
+
+length=len(L)
+temp=L[0]
+L[0]=L[length-1]
+L[length-1]=temp  
+
+print(L)
+You
+7:28 AM
+L=[8,3,4,12,5]
+
+mind=0  # 8>0 , 3>8 
+
+for i in range(0, len(L)):
+    
+    if L[i] > mind:
+        mind=L[i]
+        
+print(mind)
+You
+7:33 AM
+L=["Apple", "Dinosar", "Ball","Cat"] # [5,7,4,3]
+
+mind=0  
+check_index=0
+for i in range(0, len(L)):
+    length = len(L[i])
+    if length > mind:
+        mind=length
+        check_index = i 
+        
+print(mind)
+print(L[check_index])
+Blazil 07
+7:45 AM
+L[-1]
+You
+7:58 AM
+L=[4,2,1,3,5,0,7] # [0,2,1,3,5,4,7] => [0,1,2,3,5,4,7]
+
+"""
+[2, 4, 1, 3, 5, 0, 7]
+[1, 4, 2, 3, 5, 0, 7]
+[0, 4, 2, 3, 5, 1, 7]
+[0, 2, 4, 3, 5, 1, 7]
+[0, 1, 4, 3, 5, 2, 7]
+[0, 1, 3, 4, 5, 2, 7]
+[0, 1, 2, 4, 5, 3, 7]
+[0, 1, 2, 3, 5, 4, 7]
+[0, 1, 2, 3, 4, 5, 7]
+[0, 1, 2, 3, 4, 5, 7]
+"""
+
+for i in range(0, len(L)): # [4,2,1,3,5,0,7]
+    
+    for j in range(i+1, len(L)): # [2,1,3,5,0,7]
+        
+        if L[i] > L[j]: # 4>2 2>4, 2>1 (1, )
+            temp=L[i]
+            L[i] = L[j]
+            L[j]
