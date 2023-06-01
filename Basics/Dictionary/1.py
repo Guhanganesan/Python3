@@ -11,12 +11,14 @@ d['name']='raja'
 print(d)
 
 print(d.get('name'))
-d.pop('age')
 
+d.pop('age')
 print(d)
+
 d.popitem() #removes from last key and values
 print(d)
 
-
-
+d={'a':1, 'b':2}
+del d['b']
+print(d)
 

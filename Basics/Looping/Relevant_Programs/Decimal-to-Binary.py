@@ -1,14 +1,19 @@
-num=11
+num=int(input("Enter Number: "))
 sum=0 
-count=0 
 L=[]
-x=" "
+count=0
 while num>0:
     rem=num%2
     L.append(rem)
+    print(rem*(2**count))
+    sum=sum+rem*(2**count)
     num=num//2
     count=count+1
-    
-for i in range(len(L)-1, -1, -1):
-    x=x+str(L[i])
-print(int(x))
+
+print("Decimal: ", sum)
+binary = [ str(num) for num in L]
+print("Binary: ", " ".join(binary))
+
+"""
+11 => 1011
+"""
