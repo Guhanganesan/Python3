@@ -21,5 +21,3 @@ class Nokia(Mobile):
 
 nk =Nokia()
 nk.getValues()
-
-

@@ -11,7 +11,7 @@ rbi = RBI()
 class SBI:
     def test(self):
         print("test")
-     def provideLoan(self):
+    def provideLoan(self):
         print("Loan limit is 50 lk")
 
 sbi = SBI()
@@ -22,9 +22,9 @@ class MyBank(RBI,SBI):
     def test1(self):
         pass
 
-branch = SbiBranch()
-branch.provideLoan()
-branch.test()
-branch.test1()
+# branch = SbiBranch()
+# branch.provideLoan()
+# branch.test()
+# branch.test1()
 
 
