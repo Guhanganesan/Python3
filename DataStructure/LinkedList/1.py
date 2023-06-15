@@ -17,4 +17,4 @@ class Node:
 
 item_node=Node("Sugar")
 print(item_node.get_data())
-
+print(item_node.get_next())

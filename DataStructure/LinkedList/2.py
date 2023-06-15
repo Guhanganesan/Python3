@@ -18,7 +18,7 @@ class Node:
         return self.__next
     
     def set_next(self,next_node):
-        self.__next=next_node
+        self.__next=next_node # Node()
     
 class LinkedList:
     def __init__(self):
@@ -68,4 +68,7 @@ biscuit_list.add("Bourbon")
 biscuit_list.add("Hide&Seek")
 biscuit_list.add("Nutrichoice")
 
-print(count_nodes(biscuit_list))
+# print(count_nodes(biscuit_list))
+
+biscuit_list.display()
+
