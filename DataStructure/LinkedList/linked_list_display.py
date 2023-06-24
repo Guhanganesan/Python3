@@ -11,13 +11,14 @@ class LinkedList:
             self.__head=self.__tail=new_node
         else:
             self.__tail.set_next(new_node)
+            print(self.__tail)
             self.__tail=new_node
 
     def display(self):
         temp=self.__head
         while(temp is not None):
             print(temp.get_data())
-            temp=temp.get_next()
+            temp=temp.get_next() 
     
                                               
 biscuit_list=LinkedList()
@@ -26,4 +27,4 @@ biscuit_list.add("Bourbon")
 biscuit_list.add("Hide&Seek")
 biscuit_list.add("Nutrichoice")
 
-biscuit_list.display()
+# biscuit_list.display()

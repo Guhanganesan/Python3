@@ -1,0 +1,111 @@
+1.Class:
+In Python, a class is a blueprint for creating objects. It defines a set of attributes (variables) and methods (functions) that describe the behavior and properties of objects instantiated from the class.
+
+2.Object:
+In object-oriented programming (OOP), an object is an instance of a class. It represents a specific entity or concept with its own unique state (attributes) and behavior (methods).
+An object is created based on the blueprint provided by a class. It encapsulates data and functions related to a specific entity, allowing you to work with and manipulate that entity in a structured manner.
+
+3.Properties:
+n object-oriented programming (OOP), properties are special class members that encapsulate the access and modification of class attributes. They provide an interface to interact with the attributes of an object, allowing for controlled access and manipulation.
+Properties in OOP are used to ensure data encapsulation and provide a level of abstraction. They allow you to define getter and setter methods to control how attributes are accessed and modified. This helps maintain data integrity and encapsulation by preventing direct access to attributes from outside the class.
+
+4.Constructor:
+In object-oriented programming (OOP), a constructor is a special method used to initialize objects of a class. It is called automatically when an object is created from the class and is used to set up the initial state of the object by assigning values to its attributes or performing any necessary setup operations.
+In Python, the constructor method is named __init__(). It is defined within a class and takes the self parameter as the first argument, which refers to the instance of the class being created. Additional arguments can be specified to allow for initialization with specific values.
+
+5.Inheritance:
+Allows classes to inherit attributes and methods from other classes. It enables the creation of a hierarchy of classes, where more specific classes (called subclasses or derived classes) inherit characteristics from more general classes (called superclasses or base classes).
+In Python, inheritance is achieved by defining a new class that derives from an existing class. The derived class inherits all the attributes (variables) and methods of the base class and can also add its own attributes and methods or override the ones inherited from the base class.
+
+6.Abstract:
+In Python, the concept of abstract classes and abstract methods can be achieved using the abc module, which stands for "Abstract Base Classes." An abstract class is a class that cannot be instantiated and is meant to serve as a blueprint for other classes.
+To create an abstract class in Python, you need to import the ABC (Abstract Base Class) class from the abc module and use it as a base class for your abstract class. Additionally, you can define abstract methods within the abstract class using the @abstractmethod decorator. An abstract method is a method that has no implementation in the abstract class and must be implemented by any concrete (non-abstract) subclasses.
+
+7.Encapsulation:
+
+Encapsulation is one of the fundamental principles of object-oriented programming (OOP) and refers to the bundling of data and methods into a single unit called a class. It is a way of organizing and hiding the internal implementation details of an object from the outside world. Encapsulation provides data abstraction, data hiding, and encapsulation of related behavior, which leads to better code organization, modularity, and security.
+
+In Python, encapsulation is achieved by using classes and access modifiers. The access modifiers determine the visibility and accessibility of class members (attributes and methods) from different parts of the program.
+
+Python has three access modifiers that control encapsulation:
+
+Public (public): Members declared as public are accessible from anywhere, both inside and outside the class. By default, all class members are public.
+
+Protected (protected): Members declared as protected are accessible within the class and its subclasses. In Python, there is a convention to use a single underscore prefix (e.g., _variable) to indicate protected members. However, it doesn't enforce strict protection like some other languages.
+
+Private (private): Members declared as private are accessible only within the class itself. In Python, there is a convention to use a double underscore prefix (e.g., __variable) to indicate private members. The double underscore prefix invokes name mangling, which changes the name of the member to make it harder to access directly from outside the class.
+
+8.Polymorphism:
+
+Polymorphism in Python refers to the ability of objects of different types to be treated as objects of a common superclass or interface. It allows methods to be defined in multiple classes with the same name but different implementations. The appropriate method is invoked based on the type of the object at runtime.
+
+Python supports two types of polymorphism: compile-time polymorphism (method overloading) and runtime polymorphism (method overriding).
+
+1. Compile-time Polymorphism (Method Overloading):
+In Python, method overloading is achieved by defining multiple methods with the same name but different parameters or argument types. However, unlike some other programming languages, Python does not provide native support for method overloading based on different parameter types. Method overloading in Python typically involves providing default values for parameters or using variable-length arguments (*args, **kwargs) to handle different argument combinations.
+class MathUtils:
+    def add(self, a, b):
+        return a + b
+
+    def add(self, a, b, c):
+        return a + b + c
+
+
+math = MathUtils()
+print(math.add(2, 3))         # Output: 5
+print(math.add(2, 3, 4))      # Output: 9
+
+2. Runtime Polymorphism (Method Overriding):
+Runtime polymorphism in Python is achieved through method overriding, where a subclass provides its own implementation of a method that is already defined in its superclass. This allows objects of different subclasses to be treated as objects of the superclass, and the appropriate overridden method is called based on the actual type of the object at runtime.
+class Animal:
+    def make_sound(self):
+        print("Generic animal sound")
+
+
+class Dog(Animal):
+    def make_sound(self):
+        print("Woof!")
+
+
+class Cat(Animal):
+    def make_sound(self):
+        print("Meow!")
+
+
+animals = [Dog(), Cat()]
+
+for animal in animals:
+    animal.make_sound()
+
+
+9.Self VS Super:
+
+In Python, self and super() are both used within the context of object-oriented programming (OOP) but serve different purposes.
+
+self:
+
+self is a reference to the current instance of a class. It is a conventional name used as the first parameter in instance methods within a class.
+It is used to access and modify instance variables and invoke other methods within the class.
+When a method is called on an instance of a class, self is implicitly passed as the first argument. This allows the method to operate on the specific instance.
+
+super():
+
+super() is a built-in function used to call a method from a superclass or parent class. It is commonly used to invoke the superclass's method within an overridden method in a subclass.
+It provides a way to access and utilize the methods and attributes defined in the superclass.
+By using super(), you can extend or customize the behavior of the superclass's method without completely redefining it.
+
+10.Self:
+
+In object-oriented programming (OOP) with Python, self is a conventionally used parameter name that refers to the instance of a class. It is a reference to the current object on which a method is being called. When defining methods within a class, self is typically the first parameter, although you can choose any name for this parameter (although it is recommended to stick with the convention of using self).
+
+Here are some key points about self:
+
+Instance Method Access: In Python, instance methods within a class receive the instance as the first parameter automatically. By convention, this parameter is named self. It allows the instance to access its attributes and other methods.
+
+Attribute Access: Using self, you can access instance variables and other attributes of the object within the class methods. It allows you to store and retrieve data specific to each instance of the class.
+
+Method Invocation: When you call a method on an instance of a class, self is automatically passed as the first argument. This allows the method to operate on the specific instance, accessing its attributes and invoking other methods.
+
+Multiple Instances: Each instance of a class maintains its own set of instance variables. The use of self ensures that the correct instance is referenced when accessing or modifying instance-specific data.
+
+

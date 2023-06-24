@@ -29,13 +29,20 @@ class LinkedList:
     
     def insert(self,data,data_before):
         new_node=Node(data)
+        print("data", data)
+        print("data_before", data_before)
+        print("new_node", new_node)
+        
         if(data_before==None): # Add at 1st location
             new_node.set_next(self.__head) # self.__next = ??
             self.__head=new_node
             if(new_node.get_next()==None): # self.__next = ??
                 self.__tail=new_node
+    
         else: # Add after existing node 
             node_before=self.find_node(data_before)
+            print("node_before: ", node_before)
+            
             if(node_before is not None):
                 new_node.set_next(node_before.get_next())
                 node_before.set_next(new_node)
@@ -44,6 +51,25 @@ class LinkedList:
             else:
                 print(data_before,"is not present in the Linked list")
     
+    def delete(self,data):
+        node=self.find_node(data)
+        if(node is not None):
+            if(node==self.__head):
+                if(self.__head==self.__tail):
+                    self.__tail=None
+                self.__head=node.get_next()
+            else:
+                temp=self.__head
+                while(temp is not None):
+                    if(temp.get_next()==node):
+                        temp.set_next(node.get_next())
+                        if(node==self.__tail):
+                            self.__tail=temp
+                        node.set_next(None)
+                        break
+                    temp=temp.get_next()
+        else:
+            print(data,"is not present in Linked list")
                                               
 biscuit_list=LinkedList()
 biscuit_list.add("Goodday")
@@ -51,37 +77,9 @@ biscuit_list.add("Bourbon")
 biscuit_list.add("Hide&Seek")
 biscuit_list.add("Nutrichoice")
 
-# biscuit_list.display()
-
-# biscuit_list.find_node("Bourbon")
-
-biscuit_list.insert("5050", None)
-
-biscuit_list.display()
-
 print("=========================")
 
-biscuit_list.insert("Milk", "Hide&Seek")
+biscuit_list.delete("Bourbon")
 
 biscuit_list.display()
 
-"""
-data 5050
-data_before None
-new_node <node.Node object at 0x000001CE27916910>
-5050
-Goodday
-Bourbon
-Hide&Seek
-Nutrichoice
-=========================
-data Milk
-data_before Hide&Seek
-new_node <node.Node object at 0x000001CE27916A10>
-5050
-Goodday
-Bourbon
-Hide&Seek
-Milk
-Nutrichoice
-"""
