@@ -1,3 +1,10 @@
+"""
+Advantages of List Comprehension
+More time-efficient and space-efficient than loops.
+Require fewer lines of code.
+Transforms iterative statement into a formula.
+"""
+
 a="guhan"
 b="12345"
 z=[ "".join([list(b)[i],list(a)[i]]) for i in range(0,len(list(a)))]
@@ -41,7 +48,33 @@ z=dict(zip(names,ages))
 print(z) # {'G': 30, 'g': 35} duplicate key removed
 
 
+# Explicit function 
+def digitSum(n): 
+    dsum = 0
+    for ele in n: 
+        dsum += int(ele) 
+    return dsum 
+# Initializing list 
+List = [367, 111, 562, 945, 6726, 873] 
+newList = [digitSum(str(num)) for num in List] 
+print(newList) #[16, 3, 13, 18, 21, 18]
 
 
+#using map
+# Explicit function 
+def digitSum(n): # should not typecase while passing params
+    dsum = 0
+    for ele in str(n): 
+        dsum += int(ele) 
+    return dsum 
+z=list(map(digitSum, List))
+print(z) # [16, 3, 13, 18, 21, 18]
 
+import functools
 
+#   filtering negative numbers 
+lst = filter((lambda x: x < 0), range(-5,5)) 
+print (list(lst)) # [-5, -4, -3, -2, -1]
+    
+#  implementing max() function, using 
+print(functools.reduce(lambda a,b: a if (a > b) else b, [7, 12, 45, 100, 15])) #100
