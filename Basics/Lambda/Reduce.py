@@ -76,6 +76,17 @@ result = reduce(lambda x, y: x + y, numbers)
 print(result)  # Output: 10
 
 
+from itertools import accumulate
+# Example: Cumulative sum of all elements
+numbers = [1, 2, 3, 4]
+result = list(accumulate(numbers, lambda x, y: x + y))
+print(result)  # Output: [1, 3, 6, 10]
+
+
+
+
+
+
 
 
 
