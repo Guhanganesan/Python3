@@ -68,3 +68,24 @@ print(list(filter(even,nums)))
 evens = filter(lambda x: True if (x % 2 == 0) else False, nums)
 print(list(evens)) # [2, 4, 6, 8, 0]
 
+#Overuse Lambda Expression
+
+d = (lambda x, y, z: x*y+z)(1, 2, 3)
+print(d) # 5
+
+num = (lambda x: "one" if x == 1 else( "two" if x == 2
+                       else ("three" if x == 3 else "ten")))(3)
+print(num) #three
+
+nums = [-2, -1, 0, 1, 2]
+sort = sorted(nums, key=lambda x: abs(x))
+print(sort) # [0, -1, 1, -2, 2]
+
+sort = sorted(nums, key=abs) # Enough
+print(sort) # [0, -1, 1, -2, 2]
+
+
+print((x for x in range(5))) # <generator object <genexpr> at 0x7eff6990e4d0>
+print([x for x in range(5)]) # [0, 1, 2, 3, 4]
+
+
