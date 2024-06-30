@@ -19,3 +19,9 @@ print(d_) # [{'name': 'guhan', 'age': 34}, {'name': 'anbu', 'age': 32}, {'name':
 
 newdict = {x: x**3 for x in range(10) if x**3 % 4 == 0}
 print(newdict) # {0: 0, 2: 8, 4: 64, 6: 216, 8: 512}
+
+
+areas=['R','K','F']
+# Frame Dicts
+d_ = [{"name":key,"age":val, "areas":mz} for key, val,mz in zip(names,ages, areas)]
+print(d_) # [{'name': 'guhan', 'age': 34, 'areas': 'R'}, {'name': 'anbu', 'age': 32, 'areas': 'K'}, {'name': 'amudhan', 'age': 2, 'areas': 'F'}]
