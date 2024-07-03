@@ -12,4 +12,3 @@ for element in data:
 
 with open('myfile.json', 'w') as data_file:
     data = json.dump(data, data_file)
-
