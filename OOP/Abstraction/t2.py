@@ -1,4 +1,4 @@
-#hIERARCHIAL INHERITANCE
+#HIERARCHIAL INHERITANCE
 class RBI:
     name="Reserve Bank of India"
     def provideLoan(self):

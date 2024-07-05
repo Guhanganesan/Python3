@@ -5,15 +5,11 @@ class Vehicle(ABC):
         print("Hi")
     def stop(self):
         pass
-
+    
 # vc = Vehicle() #Can't instantiate abstract class Vehicle with abstract methods start
-
 class Bus(Vehicle):
     def run(self):
-        print('running')
-    
-    
-    
+        print('running')   
     def start(self):
         print("Starting")
     
