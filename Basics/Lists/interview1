@@ -1,0 +1,23 @@
+'''
+Write a Python function to rotate the list of elements by N positions. The function should return the rotated list.
+Sample Input
+Input list: [1, 2, 3, 4, 5, 6]
+Number of positions to be rotated = 2
+Expected Output
+[5, 6, 1, 2, 3, 4]
+'''
+L=[1, 2, 3, 4, 5, 6]
+num_rot=int(input("Enter number of rotaion"))
+o_ems = []
+def rotate_list(L, num_rot):
+    print(L)
+    n_inex=-num_rot
+    print(num_rot)
+    l_ems = L[n_inex:]
+    r_ems = L[:n_inex]
+    o_ems.extend(l_ems)
+    o_ems.extend(r_ems)
+    return o_ems
+    
+res = rotate_list(L,num_rot)
+print(res)
