@@ -21,7 +21,7 @@ for num in L:
 
 print(sum_list)
 
-res = [ sum(L[0:index+1]) for index in range(0, len(L))]
+res = [sum(L[0:index+1]) for index in range(0, len(L))]
 print(res)
 
 
