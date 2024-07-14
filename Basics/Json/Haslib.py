@@ -23,7 +23,7 @@ string_hash = sha256.hexdigest()
 
 print(f"Hash:{string_hash}") # Hash:252f8ca07a6fcaae293e5097151c803a7f16504e48c4eb60f651c11341e83217
 
--------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------
 
 # importing sys for getting commandline arguments
 import sys

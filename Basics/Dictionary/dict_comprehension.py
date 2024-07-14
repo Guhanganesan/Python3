@@ -9,6 +9,9 @@ print(d) # {'guhan': 34, 'anbu': 32, 'amudhan': 2, 'jayasri': 31}
 keys=dict.fromkeys(range(5), True)
 print(keys)
 
+keys = dict.fromkeys(range(50,100))
+print(keys) # {50:None, 51:None... 99:None}
+
 #Frame Keys
 d_names = [{"name":val} for val in names]
 print(d_names) # [{'name': 'guhan'}, {'name': 'anbu'}, {'name': 'amudhan'}, {'name': 'jayasri'}]

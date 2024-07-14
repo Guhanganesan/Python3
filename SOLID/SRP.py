@@ -19,7 +19,7 @@ class AuthenticationService:
         self.users.append(user)
 
     def authenticate(self, username, email):
-        for user in self.users:
+        for user in self.users: # [user_objects....]
             if user.username == username and user.email == email:
                 return True
         return False

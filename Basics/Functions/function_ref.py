@@ -22,10 +22,10 @@ test(10,20)
 test(10,20,30)
 test(10,20,30,40)
 
-Ans:
-30
-60
-100
+# Ans:
+# 30
+# 60
+# 100
 
 #==================
 
@@ -59,7 +59,7 @@ res = list(map(check_name, ['Guhan', 'Anbu', 'Murugan', 'Guhan Ganesan']))
 print(res)
 
 
-Ans: [True, False, False, True]
+# Ans: [True, False, False, True]
 
 #=========================
 
@@ -70,9 +70,9 @@ def check_name(name):
 res = list(filter(check_name, ['Guhan', 'Anbu', 'Murugan', 'Guhan Ganesan']))
 print(res)
 
-Ans: ['Guhan', 'Guhan Ganesan']
+# Ans: ['Guhan', 'Guhan Ganesan']
 
-#=========================
+#============  ZIP =============
 
 a = ("John", "Charles", "Mike")
 b = ("Jenny", "Christy", "Monica")
@@ -80,7 +80,7 @@ b = ("Jenny", "Christy", "Monica")
 x = dict(zip(a, b))
 print(x)
 
-#=========================
+#============ Recursion =============
 
 def countdown(n):
     print(n)

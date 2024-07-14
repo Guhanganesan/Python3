@@ -8,7 +8,5 @@ try:
 #except Exception:
 #    print("You cannot divide a number by zero")
 
-
 except Exception as e:
     print("U cannot divide a number by zero",e)
-
