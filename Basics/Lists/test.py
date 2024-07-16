@@ -22,3 +22,11 @@ if(check==True):
     print("Found")
 else:
     print("Not Found")
+
+"""
+a=[1,2,3]
+b=[3,4,5]
+c=[6,7,8]
+# Output
+# [(1, 3, 6), (2, 4, 7), (3, 5, 8)]
+"""
