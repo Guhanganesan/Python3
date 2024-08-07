@@ -1,0 +1,66 @@
+"""
+Certainly! asyncio is a Python library used for writing concurrent code using the async/await syntax. 
+It's designed for I/O-bound and high-level structured network code, and it provides a way to manage tasks 
+asynchronously, without the need for multi-threading or multi-processing.
+"""
+
+import asyncio
+
+async def say_hello():
+    print("Hello")
+    await asyncio.sleep(1)  # Simulate an I/O operation with a 1-second delay
+    print("World")
+
+async def main():
+    # Create a list of tasks
+    tasks = [
+        say_hello(),
+        say_hello(),
+        say_hello()
+    ]
+    # Run the tasks concurrently
+    await asyncio.gather(*tasks)
+
+# Run the main function
+if __name__ == "__main__":
+    asyncio.run(main())
+
+"""
+Example: Async I/O with HTTP Requests
+Here’s a more practical example that demonstrates using asyncio with asynchronous HTTP requests. 
+For this, you can use the aiohttp library to perform asynchronous HTTP operations.
+
+First, you need to install the aiohttp library:
+pip install aiohttp
+"""
+
+import aiohttp
+import asyncio
+
+async def fetch_url(session, url):
+    async with session.get(url) as response:
+        print(f"Fetching {url}")
+        return await response.text()
+
+async def main():
+    urls = [
+        'https://www.example.com',
+        'https://www.example.org',
+        'https://www.example.net'
+    ]
+    
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_url(session, url) for url in urls]
+        results = await asyncio.gather(*tasks)
+        
+        for url, content in zip(urls, results):
+            print(f"Content length from {url}: {len(content)}")
+
+# Run the main function
+if __name__ == "__main__":
+    asyncio.run(main())
+
+
+
+
+

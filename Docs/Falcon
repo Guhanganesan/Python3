@@ -1,0 +1,249 @@
+"""
+Falcon is a lightweight, high-performance web framework for building APIs with Python. 
+It’s designed to be minimalistic and provide high-speed HTTP performance.
+
+=> pip install falcon gunicorn
+=> gunicorn app:app (Run App)
+
+"""
+
+import falcon
+
+class HelloWorldResource:
+    def on_get(self, req, resp):
+        """Handles GET requests"""
+        resp.media = {'message': 'Hello, World!'}
+        resp.status = falcon.HTTP_200
+
+class UserResource:
+    def __init__(self):
+        self.users = {
+            '1': {'name': 'Alice'},
+            '2': {'name': 'Bob'}
+        }
+
+    def on_get(self, req, resp, user_id):
+        """Handles GET requests for a specific user"""
+        user = self.users.get(user_id)
+        if user:
+            resp.media = user
+            resp.status = falcon.HTTP_200
+        else:
+            resp.status = falcon.HTTP_404
+            resp.media = {'error': 'User not found'}
+
+# Create the Falcon application
+app = falcon.App()
+
+# Add routes
+app.add_route('/hello', HelloWorldResource())
+app.add_route('/users/{user_id}', UserResource())
+
+
+"""
+Testing API 
+
+1. 
+
+curl http://localhost:8000/hello 
+
+{"message": "Hello, World!"}
+
+
+2. 
+
+curl http://localhost:8000/users/1
+
+{"name": "Alice"}
+
+
+3. 
+
+curl http://localhost:8000/users/3
+
+
+{"error": "User not found"}
+
+
+"""
+
+# Example 2
+
+import uvicorn
+import falcon
+import falcon.asgi
+import jinja2
+
+html = """
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>GeeksforGeeks Chat</title>
+      <style>
+         body {
+            background-color: #f0f8ea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+         }
+         #chat-container {
+            width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         }
+      </style>
+   </head>
+   <body>
+      <div id="chat-container">
+         <h1>GeeksforGeeks Chat</h1>
+         <ul id='messages'></ul>
+         <form action="" onsubmit="sendMessage(event)">
+            <input type="text" id="messageText" autocomplete="off"/>
+            <button>Send</button>
+         </form>
+      </div>
+      <script>
+         var ws = new WebSocket("ws://localhost:8000/chat");
+         ws.onmessage = function(event) {
+            var messages = document.getElementById('messages');
+            var message = document.createElement('li');
+            var content = document.createTextNode(event.data);
+            message.appendChild(content);
+            messages.appendChild(message);
+         };
+         function sendMessage(event) {
+            var input = document.getElementById("messageText");
+            ws.send(input.value);
+            input.value = '';
+            event.preventDefault();
+         }
+      </script>
+   </body>
+</html>
+"""
+
+
+class ChatResource:
+    async def on_get(self, req, resp):
+        """Handles GET requests"""
+        resp.status = falcon.HTTP_200
+        resp.content_type = 'text/html'
+        template = jinja2.Template(html)
+        resp.body = template.render()
+
+    async def on_websocket(self, req, websocket):
+        await websocket.accept()
+        while True:
+            data = await websocket.receive_text()
+            await websocket.send_text(f"Message: {data}")
+
+
+app = falcon.asgi.App()
+chat = ChatResource()
+app.add_route('/chat', chat)
+
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+
+# python module_name.py 
+
+
+# Example 3 
+
+# Import the necessary modules
+from waitress import serve
+import falcon
+
+
+# Define a Falcon resource class
+class MyResource:
+	def on_get(self, req, resp):
+		resp.status = falcon.HTTP_200
+		resp.content_type = falcon.MEDIA_TEXT
+		resp.text = "Hello, GFG User !"
+
+
+# Create a Falcon application
+app = falcon.App()
+
+# Create an instance of the MyResource class
+myResource = MyResource()
+
+# Add a route to the Falcon app, mapping the root URL ('/') to the MyResource instance
+app.add_route("/", myResource)
+
+# Check if the script is executed as the main program
+if __name__ == "__main__":
+	# Print a message to indicate the server is starting
+	print("Server is starting on http://127.0.0.1:8000")
+
+	# Serve the Falcon app using Waitress, specifying the host and port
+	serve(app, host="127.0.0.1", port=8000)
+     
+
+# Example 4
+
+import falcon
+from falcon_cors import CORS
+
+# Create a Falcon application instance
+app = falcon.App()
+
+# Configure CORS middleware with custom settings
+cors = CORS(
+    allow_origins_list=['http://localhost:3000', 'http://localhost:8080'],
+    allow_methods_list=['GET', 'POST'],
+    allow_headers_list=['Content-Type', 'Authorization'],
+    expose_headers_list=['X-Custom-Header'],
+    allow_credentials_all_origins=True
+)
+app.add_middleware(cors.middleware)
+
+# Define a Falcon resource class
+class GreetingResource:
+    def on_get(self, req, resp):
+        resp.media = {'message': 'Welcome to the Falcon CORS example!'}
+
+# Add a route to the resource
+app.add_route('/policy', GreetingResource())
+
+# Run the Falcon application
+if __name__ == '__main__':
+    from wsgiref import simple_server
+    httpd = simple_server.make_server('localhost', 8000, app)
+    print('Serving on localhost:8000...')
+    httpd.serve_forever()
+
+
+# Example 5
+
+import falcon
+
+
+class CookieResource:
+    def on_get(self, req, resp):
+        # Set cookies
+        resp.set_cookie('username', 'JohnDoe')
+        resp.set_cookie('session_id', 'abc123', max_age=3600, secure=True)
+
+        # Output
+        resp.status = falcon.HTTP_200  # Set HTTP status code
+        resp.body = 'Cookies set successfully'
+
+
+app = falcon.App()
+app.add_route('/set_cookies', CookieResource())
+
+# Run the Falcon application
+if __name__ == '__main__':
+    from wsgiref import simple_server
+
+    httpd = simple_server.make_server('127.0.0.1', 8000, app)
+    # print(&quot;Server started on http://127.0.0.1:8000&quot;)
+    httpd.serve_forever()
+
