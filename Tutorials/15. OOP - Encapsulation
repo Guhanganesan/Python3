@@ -1,0 +1,150 @@
+Encapsulation is a fundamental concept in object-oriented programming (OOP) that refers to the bundling of data (attributes) and methods (functions) that operate on the data into a single unit, typically a class. It also involves restricting access to certain details of an object's implementation to protect its internal state and ensure that the object's data is not directly accessible or modifiable from outside the class.
+
+### Key Aspects of Encapsulation
+
+1. **Private Attributes and Methods**: Restrict access to the internal state of an object by marking attributes and methods as private. This is typically done using a naming convention with underscores.
+2. **Public Interface**: Provide a public interface (public methods) that allows interaction with the object while keeping the internal details hidden.
+3. **Getter and Setter Methods**: Control access to private attributes through getter and setter methods, allowing for validation or additional processing.
+
+### Implementing Encapsulation in Python
+
+#### 1. **Private Attributes and Methods**
+
+In Python, private attributes and methods are indicated by prefixing their names with double underscores (`__`). This is a naming convention that triggers name mangling, making it more difficult (but not impossible) to access these attributes from outside the class.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.__name = name  # Private attribute
+        self.__age = age    # Private attribute
+
+    def get_name(self):
+        return self.__name
+
+    def set_name(self, name):
+        self.__name = name
+
+    def get_age(self):
+        return self.__age
+
+    def set_age(self, age):
+        if age > 0:
+            self.__age = age
+        else:
+            raise ValueError("Age must be positive")
+
+    def __private_method(self):
+        print("This is a private method")
+
+    def public_method(self):
+        self.__private_method()
+        print("This is a public method")
+
+p = Person("Alice", 30)
+print(p.get_name())   # Output: Alice
+p.set_name("Bob")
+print(p.get_name())   # Output: Bob
+
+# The following will raise an AttributeError
+# print(p.__name)
+
+# The following will work due to name mangling
+print(p._Person__name)  # Output: Bob
+
+p.public_method()
+# Output:
+# This is a private method
+# This is a public method
+```
+
+In this example:
+- `__name` and `__age` are private attributes.
+- `__private_method` is a private method.
+- `get_name` and `set_name` are public methods used to access and modify the private attribute.
+
+#### 2. **Public Interface**
+
+Public methods provide a controlled way to interact with the object's state. They allow for encapsulating the logic of how data is accessed or modified.
+
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+        else:
+            raise ValueError("Deposit amount must be positive")
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            raise ValueError("Invalid withdrawal amount")
+
+    def get_balance(self):
+        return self.__balance
+
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance())  # Output: 1500
+
+# The following will raise an AttributeError
+# print(account.__balance)
+```
+
+In this example, the `BankAccount` class uses public methods (`deposit`, `withdraw`, `get_balance`) to manage access to the private attribute `__balance`.
+
+#### 3. **Getter and Setter Methods**
+
+Getter and setter methods are used to access and modify private attributes while providing a way to include additional logic, such as validation.
+
+```python
+class Student:
+    def __init__(self, name, grade):
+        self.__name = name
+        self.__grade = grade
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
+
+    @property
+    def grade(self):
+        return self.__grade
+
+    @grade.setter
+    def grade(self, value):
+        if 0 <= value <= 100:
+            self.__grade = value
+        else:
+            raise ValueError("Grade must be between 0 and 100")
+
+student = Student("John", 85)
+print(student.name)   # Output: John
+print(student.grade)  # Output: 85
+
+student.grade = 90
+print(student.grade)  # Output: 90
+
+# The following will raise an exception
+# student.grade = 110
+```
+
+In this example:
+- `name` and `grade` are properties with getter and setter methods.
+- The `grade` setter includes validation to ensure the grade is within a valid range.
+
+### Summary
+
+- **Encapsulation**: Bundles data and methods into a class and hides the internal state from outside access.
+- **Private Attributes and Methods**: Use double underscores (`__`) to indicate private attributes and methods, enabling name mangling.
+- **Public Interface**: Provide methods to interact with the object's state while keeping internal details hidden.
+- **Getter and Setter Methods**: Control access to private attributes with validation or additional logic.
+
+Encapsulation helps to create a clear and controlled interface for your objects, improves code maintainability, and protects the integrity of the object's state.

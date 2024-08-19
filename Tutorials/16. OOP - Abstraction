@@ -1,0 +1,151 @@
+Abstraction in Python is a core principle of object-oriented programming (OOP) that focuses on simplifying complex systems by modeling classes based on essential properties and behaviors while hiding unnecessary details. It allows you to create abstract representations of real-world entities, enabling you to work with high-level concepts rather than low-level details.
+
+### Key Concepts of Abstraction
+
+1. **Abstract Classes**: These are classes that cannot be instantiated and are used as a blueprint for other classes. They may contain abstract methods that must be implemented by subclasses.
+2. **Abstract Methods**: Methods that are declared in an abstract class but are not implemented. Subclasses are required to provide implementations for these methods.
+3. **Concrete Classes**: These are subclasses that implement all abstract methods of their abstract base classes and can be instantiated.
+
+### Implementing Abstraction in Python
+
+Python provides the `abc` (Abstract Base Classes) module to support abstraction. This module allows you to define abstract base classes and methods.
+
+#### 1. **Defining Abstract Classes and Methods**
+
+You use the `ABC` class and the `abstractmethod` decorator from the `abc` module to define abstract classes and methods.
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+class Rectangle(Shape):
+    
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+class Circle(Shape):
+    
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        from math import pi
+        return pi * (self.radius ** 2)
+
+    def perimeter(self):
+        from math import pi
+        return 2 * pi * self.radius
+
+# Cannot instantiate Shape directly
+# shape = Shape()  # This will raise TypeError
+
+rect = Rectangle(5, 10)
+print(f"Rectangle area: {rect.area()}")  # Output: Rectangle area: 50
+print(f"Rectangle perimeter: {rect.perimeter()}")  # Output: Rectangle perimeter: 30
+
+circle = Circle(7)
+print(f"Circle area: {circle.area()}")  # Output: Circle area: 153.93804002589985
+print(f"Circle perimeter: {circle.perimeter()}")  # Output: Circle perimeter: 43.982297150257104
+```
+
+In this example:
+- `Shape` is an abstract base class with abstract methods `area` and `perimeter`.
+- `Rectangle` and `Circle` are concrete classes that provide implementations for these abstract methods.
+- Attempting to instantiate `Shape` directly will raise a `TypeError` because it contains abstract methods.
+
+#### 2. **Using Abstract Base Classes to Define Interfaces**
+
+Abstract base classes can be used to define common interfaces that multiple classes should implement.
+
+```python
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    
+    @abstractmethod
+    def start_engine(self):
+        pass
+
+    @abstractmethod
+    def stop_engine(self):
+        pass
+
+class Car(Vehicle):
+    
+    def start_engine(self):
+        print("Car engine started")
+
+    def stop_engine(self):
+        print("Car engine stopped")
+
+class Motorcycle(Vehicle):
+    
+    def start_engine(self):
+        print("Motorcycle engine started")
+
+    def stop_engine(self):
+        print("Motorcycle engine stopped")
+
+car = Car()
+car.start_engine()  # Output: Car engine started
+car.stop_engine()   # Output: Car engine stopped
+
+motorcycle = Motorcycle()
+motorcycle.start_engine()  # Output: Motorcycle engine started
+motorcycle.stop_engine()   # Output: Motorcycle engine stopped
+```
+
+In this example:
+- `Vehicle` is an abstract base class defining an interface for vehicles with `start_engine` and `stop_engine` methods.
+- `Car` and `Motorcycle` are concrete classes that implement these methods, providing specific behaviors.
+
+#### 3. **Polymorphism with Abstract Classes**
+
+Abstraction combined with polymorphism allows you to use different concrete implementations interchangeably.
+
+```python
+def print_vehicle_status(vehicle: Vehicle):
+    vehicle.start_engine()
+    vehicle.stop_engine()
+
+car = Car()
+motorcycle = Motorcycle()
+
+print_vehicle_status(car)
+# Output:
+# Car engine started
+# Car engine stopped
+
+print_vehicle_status(motorcycle)
+# Output:
+# Motorcycle engine started
+# Motorcycle engine stopped
+```
+
+In this example, `print_vehicle_status` can accept any object of a class that implements the `Vehicle` interface, demonstrating polymorphism.
+
+### Summary
+
+- **Abstraction**: Simplifies complex systems by focusing on essential characteristics while hiding unnecessary details.
+- **Abstract Classes**: Classes that cannot be instantiated and serve as blueprints for other classes.
+- **Abstract Methods**: Methods in an abstract class that must be implemented by concrete subclasses.
+- **Concrete Classes**: Subclasses that implement all abstract methods and can be instantiated.
+- **Polymorphism**: Allows using different concrete implementations of an abstract class interchangeably.
+
+Abstraction helps manage complexity by defining clear interfaces and separating the implementation details from the usage of objects, making your code more modular, flexible, and easier to maintain.

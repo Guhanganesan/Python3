@@ -1,0 +1,120 @@
+In Python, class decorators are a type of decorator that can be applied to classes. They allow you to modify or extend the behavior of a class in a way similar to how function decorators modify or extend the behavior of functions. Class decorators are a powerful tool for adding functionality, modifying class attributes or methods, or performing other operations on classes.
+
+### Basic Concept
+
+A class decorator is a function that takes a class as an argument and returns a new class or modifies the original class. This can be used for a variety of purposes, including logging, access control, or modifying class behavior.
+
+### Syntax
+
+```python
+@decorator_function
+class MyClass:
+    pass
+```
+
+This is equivalent to:
+
+```python
+class MyClass:
+    pass
+
+MyClass = decorator_function(MyClass)
+```
+
+### Examples
+
+#### 1. **Adding Functionality to a Class**
+
+You can use a class decorator to add methods or modify existing ones.
+
+```python
+def add_greeting(cls):
+    cls.greet = lambda self: f"Hello, {self.name}!"
+    return cls
+
+@add_greeting
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+p = Person("Alice")
+print(p.greet())  # Output: Hello, Alice!
+```
+
+In this example, the `add_greeting` decorator adds a `greet` method to the `Person` class.
+
+#### 2. **Logging Method Calls**
+
+A class decorator can be used to log method calls for debugging or monitoring purposes.
+
+```python
+def log_methods(cls):
+    original_methods = {name: method for name, method in cls.__dict__.items() if callable(method)}
+    
+    def wrapper(method):
+        def wrapped(*args, **kwargs):
+            print(f"Calling method {method.__name__} with args: {args}, kwargs: {kwargs}")
+            result = method(*args, **kwargs)
+            print(f"Method {method.__name__} returned: {result}")
+            return result
+        return wrapped
+    
+    for name, method in original_methods.items():
+        setattr(cls, name, wrapper(method))
+    
+    return cls
+
+@log_methods
+class Calculator:
+    def add(self, x, y):
+        return x + y
+
+    def multiply(self, x, y):
+        return x * y
+
+calc = Calculator()
+calc.add(1, 2)
+calc.multiply(3, 4)
+```
+
+In this example, the `log_methods` decorator logs calls to each method in the `Calculator` class, including arguments and return values.
+
+#### 3. **Enforcing Attribute Values**
+
+You can use a class decorator to enforce constraints on class attributes.
+
+```python
+def enforce_positive(cls):
+    original_init = cls.__init__
+    
+    def __init__(self, *args, **kwargs):
+        original_init(self, *args, **kwargs)
+        for attr_name, value in vars(self).items():
+            if isinstance(value, (int, float)) and value <= 0:
+                raise ValueError(f"{attr_name} must be positive")
+    
+    cls.__init__ = __init__
+    return cls
+
+@enforce_positive
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+# This will raise an exception
+try:
+    r = Rectangle(-5, 10)
+except ValueError as e:
+    print(e)  # Output: width must be positive
+```
+
+In this example, the `enforce_positive` decorator checks that all numeric attributes of the `Rectangle` class are positive when an instance is created.
+
+### Summary
+
+- **Class Decorator**: A function that takes a class and returns a modified or new class.
+- **Usage**: Can be used to add methods, modify existing methods, log method calls, enforce constraints, and more.
+- **Syntax**: Use `@decorator_function` above the class definition.
+
+Class decorators provide a flexible way to modify class behavior in a reusable and modular fashion. They allow you to encapsulate common patterns and apply them consistently across different classes.

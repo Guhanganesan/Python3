@@ -1,0 +1,71 @@
+In Python, a closure is a programming concept where a nested function retains access to variables from its enclosing scope even after the outer function has finished executing. Closures are a powerful feature that can be used to create data encapsulation and function factories.
+
+### How Closures Work
+
+Here's a step-by-step explanation of how closures work:
+
+1. **Nested Function Definition**: You define a function inside another function.
+2. **Access to Enclosing Scope**: The inner function accesses variables from its enclosing (outer) function.
+3. **Return Inner Function**: The outer function returns the inner function.
+4. **Retention of State**: Even after the outer function has finished execution, the inner function retains access to the variables from the outer function’s scope.
+
+### Example
+
+Here's a simple example to illustrate closures:
+
+```python
+def outer_function(x):
+    def inner_function(y):
+        return x + y
+    return inner_function
+
+# Create a closure
+closure = outer_function(10)
+
+# Call the closure with a new argument
+result = closure(5)
+print(result)  # Output: 15
+```
+
+### Explanation:
+
+1. **Definition of `outer_function(x)`**: Defines a function that takes `x` and returns `inner_function`.
+2. **Definition of `inner_function(y)`**: Defines a nested function that takes `y` and returns `x + y`.
+3. **Returning `inner_function`**: `outer_function` returns `inner_function`, which is now a closure because it retains access to `x` from its enclosing scope.
+4. **Calling `closure(5)`**: When you call `closure` (which is essentially `inner_function` with `x` set to `10`), it has access to `x` and adds `5` to it.
+
+### Use Cases for Closures
+
+- **Function Factories**: Create functions with specific behavior based on their parameters.
+- **Encapsulation**: Hide data and implementation details inside functions.
+- **State Retention**: Maintain state across function calls.
+
+### Example of a Function Factory
+
+Here's an example of a closure being used as a function factory:
+
+```python
+def make_multiplier(factor):
+    def multiplier(x):
+        return x * factor
+    return multiplier
+
+# Create different multiplier functions
+double = make_multiplier(2)
+triple = make_multiplier(3)
+
+print(double(10))  # Output: 20
+print(triple(10))  # Output: 30
+```
+
+### Explanation:
+
+- **`make_multiplier(factor)`**: Takes a `factor` and returns a `multiplier` function.
+- **`double`** and **`triple`**: Are closures created with different `factor` values. They retain their respective `factor` values and use them to multiply input numbers.
+
+### Important Points
+
+- **Closures retain state**: The inner function retains the environment of its enclosing function, including variables.
+- **Memory Usage**: Be mindful of closures as they can hold references to objects, potentially causing increased memory usage if not managed properly.
+
+Closures are a versatile feature in Python that can be used to create powerful and flexible code patterns. They allow for encapsulating behavior and state in a way that can be very useful in various programming scenarios.

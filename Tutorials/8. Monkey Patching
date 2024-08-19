@@ -1,0 +1,92 @@
+Monkey patching in Python is a technique used to modify or extend existing classes or modules at runtime. It allows you to dynamically change or extend the behavior of libraries or classes without modifying their original source code. While it can be powerful and useful in certain situations, it should be used with caution as it can lead to code that is difficult to understand and maintain.
+
+### How Monkey Patching Works
+
+Monkey patching involves changing the attributes or methods of an object or module. This is typically done by directly assigning new functions or values to existing attributes or methods.
+
+### Examples of Monkey Patching
+
+#### 1. **Patching a Method of a Class**
+
+Let's say you have a class that you want to modify without changing its source code:
+
+```python
+class MyClass:
+    def greet(self):
+        return "Hello, World!"
+
+# Original behavior
+obj = MyClass()
+print(obj.greet())  # Output: Hello, World!
+
+# Monkey patching the greet method
+def new_greet(self):
+    return "Hello, Python!"
+
+MyClass.greet = new_greet
+
+# Modified behavior
+print(obj.greet())  # Output: Hello, Python!
+```
+
+In this example, the `greet` method of `MyClass` is replaced with `new_greet`. All instances of `MyClass` will now use the new method.
+
+#### 2. **Patching a Module Function**
+
+Suppose you want to modify a function in a module, but you can't or don't want to change the module's source code directly:
+
+```python
+# Original module code (in some_module.py)
+def calculate(value):
+    return value * 2
+
+# Your patching code
+import some_module
+
+def new_calculate(value):
+    return value * 3
+
+# Monkey patching the calculate function
+some_module.calculate = new_calculate
+
+# Using the patched function
+print(some_module.calculate(10))  # Output: 30
+```
+
+In this example, the `calculate` function in `some_module` is replaced with `new_calculate`.
+
+### Use Cases for Monkey Patching
+
+1. **Testing**: Monkey patching is often used in testing to replace parts of code with mock objects or test-specific implementations.
+   
+   ```python
+   # Example of monkey patching for testing
+   import some_module
+
+   def mock_function():
+       return "mocked result"
+
+   # Patch the function in the module
+   some_module.some_function = mock_function
+
+   # Perform tests
+   ```
+
+2. **Adding Features**: You might use monkey patching to add features to third-party libraries where you don’t have access to the source code.
+
+3. **Fixing Bugs**: In some cases, you can use monkey patching to fix bugs in libraries until an official fix is released.
+
+### Considerations and Risks
+
+- **Maintenance**: Monkey patches can make code harder to understand and maintain because they change behavior dynamically, often in unexpected ways.
+- **Compatibility**: If the original library or class is updated, your monkey patch might become incompatible or cause unexpected issues.
+- **Debugging**: Debugging issues caused by monkey patches can be challenging because the patches may introduce subtle bugs or side effects.
+
+### Summary
+
+- **Monkey patching** is a technique for modifying or extending existing classes or modules at runtime.
+- It can be used to alter behavior for testing, add features, or fix bugs without modifying the original source code.
+- **Examples** include replacing methods in classes or functions in modules.
+- **Considerations**: Use monkey patching with caution as it can impact code readability, maintainability, and compatibility.
+
+Monkey patching is a powerful tool but should be used judiciously. Always consider if there are alternative approaches, such as subclassing or using decorators, which may achieve similar results in a more maintainable manner.

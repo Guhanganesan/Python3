@@ -1,0 +1,84 @@
+In Python, the concepts of deep copying and shallow copying are used to create copies of objects, but they differ in how they handle the copying process, especially with respect to nested or complex objects. Understanding the difference between shallow and deep copies is crucial for managing mutable objects and avoiding unintended side effects.
+
+### Shallow Copy
+
+A shallow copy creates a new object, but instead of copying the nested objects (like lists or dictionaries), it only copies the references to those objects. As a result, changes to the nested objects in the copied object will affect the original object and vice versa.
+
+#### How to Create a Shallow Copy
+
+1. **Using the `copy` Module**
+
+   ```python
+   import copy
+
+   original = [1, [2, 3], 4]
+   shallow_copy = copy.copy(original)
+
+   print(original)        # Output: [1, [2, 3], 4]
+   print(shallow_copy)   # Output: [1, [2, 3], 4]
+
+   shallow_copy[1][0] = 'changed'
+   print(original)        # Output: [1, ['changed', 3], 4]
+   print(shallow_copy)   # Output: [1, ['changed', 3], 4]
+   ```
+
+   In this example, modifying the nested list in the `shallow_copy` affects the `original` list because both lists share the same nested list objects.
+
+2. **Using List Slicing (for lists only)**
+
+   ```python
+   original = [1, 2, 3]
+   shallow_copy = original[:]
+
+   print(original)        # Output: [1, 2, 3]
+   print(shallow_copy)   # Output: [1, 2, 3]
+
+   shallow_copy[0] = 'changed'
+   print(original)        # Output: [1, 2, 3]
+   print(shallow_copy)   # Output: ['changed', 2, 3]
+   ```
+
+   This method creates a shallow copy of the list, not affecting the nested elements since the list itself is copied, but nested objects remain shared.
+
+### Deep Copy
+
+A deep copy creates a new object and recursively copies all objects found within the original object. This means that all nested objects are also copied, resulting in a completely independent copy where changes to nested objects in the copied object do not affect the original object.
+
+#### How to Create a Deep Copy
+
+1. **Using the `copy` Module**
+
+   ```python
+   import copy
+
+   original = [1, [2, 3], 4]
+   deep_copy = copy.deepcopy(original)
+
+   print(original)        # Output: [1, [2, 3], 4]
+   print(deep_copy)      # Output: [1, [2, 3], 4]
+
+   deep_copy[1][0] = 'changed'
+   print(original)        # Output: [1, [2, 3], 4]
+   print(deep_copy)      # Output: [1, ['changed', 3], 4]
+   ```
+
+   In this example, modifying the nested list in `deep_copy` does not affect the `original` list because all nested objects were copied recursively.
+
+### Key Differences
+
+- **Shallow Copy**:
+  - Copies the outer object but keeps references to the inner objects.
+  - Changes to mutable nested objects in the copy will affect the original object.
+  - Created using `copy.copy()`, slicing (for lists), or specific methods (like `dict.copy()`).
+
+- **Deep Copy**:
+  - Creates a new object and recursively copies all objects found within the original object.
+  - No shared references to mutable nested objects, so changes in the copy do not affect the original.
+  - Created using `copy.deepcopy()`.
+
+### Summary
+
+- **Shallow Copy** is useful when you need a new instance of an object but can share the nested objects with the original.
+- **Deep Copy** is appropriate when you need a completely independent copy of an object, including all nested objects.
+
+Understanding these concepts helps you manage mutable objects effectively, ensuring that you avoid unintended side effects and maintain the integrity of your data.

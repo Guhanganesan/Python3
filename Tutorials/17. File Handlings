@@ -1,0 +1,156 @@
+File handling in Python allows you to work with files on your system, including reading from and writing to them. Python provides built-in functions and methods to handle file operations effectively.
+
+### Basic File Operations
+
+Here’s an overview of basic file handling operations in Python:
+
+1. **Opening a File**
+2. **Reading from a File**
+3. **Writing to a File**
+4. **Closing a File**
+5. **Working with File Paths**
+6. **Handling Exceptions**
+
+### 1. Opening a File
+
+You can open a file using the `open()` function. It takes the file path and mode as arguments. The mode specifies the operation you want to perform on the file.
+
+- `'r'`: Read (default mode, file must exist)
+- `'w'`: Write (creates a new file or overwrites an existing file)
+- `'a'`: Append (writes data to the end of the file)
+- `'b'`: Binary mode (for binary files, e.g., `'rb'` or `'wb'`)
+- `'x'`: Exclusive creation (fails if the file already exists)
+
+```python
+# Open a file for reading
+file = open('example.txt', 'r')
+
+# Open a file for writing
+file = open('example.txt', 'w')
+```
+
+### 2. Reading from a File
+
+You can read the contents of a file using methods such as `read()`, `readline()`, or `readlines()`.
+
+```python
+# Read the entire content of the file
+with open('example.txt', 'r') as file:
+    content = file.read()
+    print(content)
+
+# Read one line at a time
+with open('example.txt', 'r') as file:
+    line = file.readline()
+    while line:
+        print(line, end='')
+        line = file.readline()
+
+# Read all lines into a list
+with open('example.txt', 'r') as file:
+    lines = file.readlines()
+    for line in lines:
+        print(line, end='')
+```
+
+### 3. Writing to a File
+
+You can write to a file using methods such as `write()` and `writelines()`.
+
+```python
+# Write text to a file (overwrites if file exists)
+with open('example.txt', 'w') as file:
+    file.write("Hello, world!\n")
+    file.write("This is a new line.")
+
+# Append text to a file
+with open('example.txt', 'a') as file:
+    file.write("\nAppending another line.")
+```
+
+### 4. Closing a File
+
+Always close a file when you’re done with it to free up system resources. The `with` statement automatically closes the file when the block is exited.
+
+```python
+file = open('example.txt', 'r')
+content = file.read()
+file.close()
+```
+
+Using the `with` statement is preferred as it ensures the file is properly closed even if an error occurs.
+
+### 5. Working with File Paths
+
+You can work with file paths using the `os` and `pathlib` modules.
+
+```python
+import os
+from pathlib import Path
+
+# Get the current working directory
+cwd = os.getcwd()
+print(f"Current directory: {cwd}")
+
+# Join paths
+file_path = os.path.join(cwd, 'example.txt')
+
+# Check if a file exists
+if os.path.exists(file_path):
+    print("File exists")
+
+# Using pathlib
+path = Path('example.txt')
+if path.exists():
+    print("File exists using pathlib")
+```
+
+### 6. Handling Exceptions
+
+Use exception handling to manage errors that may occur during file operations.
+
+```python
+try:
+    with open('non_existent_file.txt', 'r') as file:
+        content = file.read()
+except FileNotFoundError:
+    print("The file does not exist.")
+except IOError as e:
+    print(f"An I/O error occurred: {e}")
+```
+
+### Example: File Handling Workflow
+
+Here's a complete example demonstrating file reading, writing, and exception handling:
+
+```python
+# Writing to a file
+try:
+    with open('example.txt', 'w') as file:
+        file.write("Hello, world!\n")
+        file.write("This is a file handling example.")
+except IOError as e:
+    print(f"An error occurred while writing to the file: {e}")
+
+# Reading from a file
+try:
+    with open('example.txt', 'r') as file:
+        content = file.read()
+        print("File content:")
+        print(content)
+except FileNotFoundError:
+    print("The file does not exist.")
+except IOError as e:
+    print(f"An error occurred while reading the file: {e}")
+```
+
+### Summary
+
+- **Opening a File**: Use `open(filename, mode)` to open a file.
+- **Reading from a File**: Use `read()`, `readline()`, or `readlines()` to read file content.
+- **Writing to a File**: Use `write()` or `writelines()` to write data to a file.
+- **Closing a File**: Always close the file using `file.close()` or use a `with` statement for automatic closure.
+- **Working with File Paths**: Use `os` and `pathlib` for file path operations.
+- **Handling Exceptions**: Use `try` and `except` to handle errors during file operations.
+
+Proper file handling ensures that your programs can read and write files efficiently and handle errors gracefully.
