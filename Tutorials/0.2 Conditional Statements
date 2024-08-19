@@ -1,0 +1,144 @@
+Conditional statements in Python are used to execute different blocks of code based on certain conditions. They allow you to control the flow of your program based on whether a condition is true or false. Python supports several types of conditional statements: `if`, `elif`, and `else`.
+
+### Basic Syntax
+
+Here’s a basic structure of conditional statements in Python:
+
+```python
+if condition:
+    # Code to execute if the condition is true
+elif another_condition:
+    # Code to execute if the previous condition is false and this condition is true
+else:
+    # Code to execute if all previous conditions are false
+```
+
+### Examples of Conditional Statements
+
+#### 1. **`if` Statement**
+
+The `if` statement evaluates a condition. If the condition is true, the code block inside the `if` statement is executed.
+
+```python
+x = 10
+
+if x > 5:
+    print("x is greater than 5")
+```
+
+In this example, since `x` is indeed greater than 5, the output will be:
+
+```
+x is greater than 5
+```
+
+#### 2. **`if-else` Statement**
+
+The `if-else` statement provides an alternative code block that executes if the condition is false.
+
+```python
+x = 3
+
+if x > 5:
+    print("x is greater than 5")
+else:
+    print("x is 5 or less")
+```
+
+Here, since `x` is not greater than 5, the output will be:
+
+```
+x is 5 or less
+```
+
+#### 3. **`if-elif-else` Statement**
+
+The `if-elif-else` statement allows you to check multiple conditions. The `elif` (else if) allows you to check additional conditions if the previous conditions are false.
+
+```python
+x = 10
+
+if x > 10:
+    print("x is greater than 10")
+elif x == 10:
+    print("x is exactly 10")
+else:
+    print("x is less than 10")
+```
+
+In this case, since `x` is exactly 10, the output will be:
+
+```
+x is exactly 10
+```
+
+#### 4. **Nested `if` Statements**
+
+You can nest `if` statements within each other to handle more complex conditions.
+
+```python
+x = 20
+y = 15
+
+if x > 10:
+    if y < 20:
+        print("x is greater than 10 and y is less than 20")
+    else:
+        print("x is greater than 10 but y is not less than 20")
+else:
+    print("x is 10 or less")
+```
+
+In this example, the output will be:
+
+```
+x is greater than 10 and y is less than 20
+```
+
+#### 5. **Using Logical Operators in Conditions**
+
+You can use logical operators (`and`, `or`, `not`) to combine multiple conditions.
+
+```python
+x = 10
+y = 5
+
+if x > 5 and y < 10:
+    print("x is greater than 5 and y is less than 10")
+
+if x > 5 or y > 10:
+    print("At least one condition is true")
+
+if not (x < 5):
+    print("x is not less than 5")
+```
+
+Output:
+
+```
+x is greater than 5 and y is less than 10
+At least one condition is true
+x is not less than 5
+```
+
+### Comparison Operators in Conditional Statements
+
+Conditional statements often use comparison operators to determine truth values:
+
+- **Equal to (`==`)**: Checks if two values are equal.
+- **Not equal to (`!=`)**: Checks if two values are not equal.
+- **Greater than (`>`)**: Checks if one value is greater than another.
+- **Less than (`<`)**: Checks if one value is less than another.
+- **Greater than or equal to (`>=`)**: Checks if one value is greater than or equal to another.
+- **Less than or equal to (`<=`)**: Checks if one value is less than or equal to another.
+
+### Summary
+
+- **`if` Statement**: Executes code if the condition is true.
+- **`if-else` Statement**: Provides an alternative code block for when the condition is false.
+- **`if-elif-else` Statement**: Handles multiple conditions by checking them sequentially.
+- **Nested `if` Statements**: Allows for complex conditions by nesting `if` statements.
+- **Logical Operators**: Combine multiple conditions using `and`, `or`, `not`.
+- **Comparison Operators**: Compare values in conditions (`==`, `!=`, `>`, `<`, `>=`, `<=`).
+
+Conditional statements are fundamental for controlling the flow of your program based on different conditions and inputs.
