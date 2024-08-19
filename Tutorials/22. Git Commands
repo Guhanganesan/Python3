@@ -1,0 +1,191 @@
+Git is a powerful version control system used to manage and track changes in source code. Here’s a comprehensive list of essential Git commands along with explanations and examples:
+
+### Basic Commands
+
+- **`git init`**: Initialize a new Git repository.
+
+  ```bash
+  git init                # Create a new .git directory in the current directory
+  ```
+
+- **`git clone`**: Clone an existing repository.
+
+  ```bash
+  git clone https://github.com/user/repository.git   # Clone the repository into a new directory
+  git clone --branch branch_name https://github.com/user/repository.git  # Clone a specific branch
+  ```
+
+- **`git status`**: Show the working directory and staging area status.
+
+  ```bash
+  git status              # Display the state of the working directory and staging area
+  ```
+
+- **`git add`**: Add file contents to the index (staging area).
+
+  ```bash
+  git add file_name       # Stage a specific file
+  git add .               # Stage all changes in the current directory
+  git add -A              # Stage all changes in the entire repository
+  ```
+
+- **`git commit`**: Record changes to the repository.
+
+  ```bash
+  git commit -m "Commit message"  # Commit staged changes with a message
+  git commit -a -m "Commit message" # Commit all changes, including modifications to tracked files
+  ```
+
+- **`git log`**: Show the commit history.
+
+  ```bash
+  git log                 # Display the commit history
+  git log --oneline       # Display the commit history in a condensed format
+  ```
+
+- **`git diff`**: Show changes between commits, working directory, and index.
+
+  ```bash
+  git diff                # Show changes between working directory and index
+  git diff HEAD           # Show changes between working directory and the latest commit
+  ```
+
+### Branching and Merging
+
+- **`git branch`**: List, create, or delete branches.
+
+  ```bash
+  git branch              # List all branches
+  git branch branch_name  # Create a new branch
+  git branch -d branch_name   # Delete a branch
+  ```
+
+- **`git checkout`**: Switch branches or restore working directory files.
+
+  ```bash
+  git checkout branch_name   # Switch to an existing branch
+  git checkout -b branch_name  # Create and switch to a new branch
+  git checkout -- file_name   # Restore file from the last commit
+  ```
+
+- **`git merge`**: Merge changes from one branch into another.
+
+  ```bash
+  git merge branch_name   # Merge the specified branch into the current branch
+  ```
+
+- **`git rebase`**: Reapply commits on top of another base tip.
+
+  ```bash
+  git rebase branch_name  # Rebase current branch onto the specified branch
+  ```
+
+- **`git cherry-pick`**: Apply changes from a specific commit to the current branch.
+
+  ```bash
+  git cherry-pick commit_hash  # Apply changes from the specified commit
+  ```
+
+### Remote Repositories
+
+- **`git remote`**: Manage remote repositories.
+
+  ```bash
+  git remote               # List remote repositories
+  git remote add origin https://github.com/user/repository.git  # Add a remote repository
+  git remote remove origin  # Remove a remote repository
+  ```
+
+- **`git fetch`**: Download objects and refs from another repository.
+
+  ```bash
+  git fetch origin        # Fetch changes from the remote repository
+  ```
+
+- **`git pull`**: Fetch from a remote repository and merge changes.
+
+  ```bash
+  git pull origin branch_name  # Fetch and merge changes from the specified branch
+  ```
+
+- **`git push`**: Update remote refs along with associated objects.
+
+  ```bash
+  git push origin branch_name   # Push changes to the specified branch on the remote repository
+  ```
+
+### Undoing Changes
+
+- **`git reset`**: Reset current HEAD to the specified state.
+
+  ```bash
+  git reset --hard HEAD~1  # Reset the working directory and index to the previous commit
+  git reset file_name      # Unstage changes in a specific file
+  ```
+
+- **`git revert`**: Revert changes from a specific commit.
+
+  ```bash
+  git revert commit_hash  # Create a new commit that undoes changes from the specified commit
+  ```
+
+- **`git clean`**: Remove untracked files from the working directory.
+
+  ```bash
+  git clean -f            # Remove untracked files
+  git clean -fd           # Remove untracked files and directories
+  ```
+
+### Tagging
+
+- **`git tag`**: Create, list, or delete tags.
+
+  ```bash
+  git tag                 # List all tags
+  git tag -a v1.0 -m "Version 1.0"  # Create an annotated tag with a message
+  git tag v1.0            # Create a lightweight tag
+  git tag -d v1.0         # Delete a tag
+  ```
+
+### Configuration
+
+- **`git config`**: Get and set repository or global options.
+
+  ```bash
+  git config --global user.name "Your Name"  # Set the global username
+  git config --global user.email "you@example.com"  # Set the global email address
+  git config --list       # List all configuration settings
+  ```
+
+### Stashing
+
+- **`git stash`**: Temporarily save changes that are not ready to be committed.
+
+  ```bash
+  git stash               # Save uncommitted changes and revert working directory to the last commit
+  git stash pop           # Apply the most recent stash and remove it from the stash list
+  git stash list          # List all stashes
+  git stash apply stash@{0} # Apply a specific stash without removing it from the stash list
+  ```
+
+### Aliases
+
+- **`git alias`**: Create shortcuts for Git commands.
+
+  ```bash
+  git config --global alias.co checkout  # Create an alias 'co' for 'checkout'
+  git config --global alias.ci commit    # Create an alias 'ci' for 'commit'
+  ```
+
+### Summary
+
+- **Initialization and Cloning**: `git init`, `git clone`
+- **File and Commit Management**: `git add`, `git commit`, `git status`, `git diff`
+- **Branching and Merging**: `git branch`, `git checkout`, `git merge`, `git rebase`
+- **Remote Repositories**: `git remote`, `git fetch`, `git pull`, `git push`
+- **Undoing Changes**: `git reset`, `git revert`, `git clean`
+- **Tagging**: `git tag`
+- **Configuration**: `git config`
+- **Stashing**: `git stash`
+
+These commands cover most of the essential operations for managing and collaborating on code using Git. For more advanced usage and detailed options, refer to the [Git documentation](https://git-scm.com/doc).
