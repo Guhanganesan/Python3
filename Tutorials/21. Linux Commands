@@ -1,0 +1,295 @@
+Linux commands are the basic instructions used in the command-line interface (CLI) to interact with the Linux operating system. Here is a comprehensive list of commonly used Linux commands along with their descriptions and examples:
+
+### File and Directory Operations
+
+- **`ls`**: List directory contents.
+
+  ```bash
+  ls         # List files and directories in the current directory
+  ls -l      # List with detailed information (long format)
+  ls -a      # Include hidden files (those starting with a dot)
+  ls -lh     # List with human-readable file sizes
+  ```
+
+- **`cd`**: Change directory.
+
+  ```bash
+  cd /path/to/directory    # Change to the specified directory
+  cd ..                    # Move up one directory
+  cd ~                     # Move to the home directory
+  ```
+
+- **`pwd`**: Print working directory.
+
+  ```bash
+  pwd                     # Display the full path of the current directory
+  ```
+
+- **`mkdir`**: Create a new directory.
+
+  ```bash
+  mkdir new_directory     # Create a new directory named 'new_directory'
+  mkdir -p /path/to/dir   # Create nested directories, if needed
+  ```
+
+- **`rmdir`**: Remove an empty directory.
+
+  ```bash
+  rmdir directory_name    # Remove the specified empty directory
+  ```
+
+- **`rm`**: Remove files or directories.
+
+  ```bash
+  rm file_name            # Remove a file
+  rm -r directory_name    # Remove a directory and its contents recursively
+  rm -f file_name         # Force removal of a file, ignoring nonexistent files
+  ```
+
+- **`cp`**: Copy files or directories.
+
+  ```bash
+  cp source_file destination_file   # Copy file to a new location
+  cp -r source_directory destination_directory   # Copy a directory recursively
+  ```
+
+- **`mv`**: Move or rename files and directories.
+
+  ```bash
+  mv old_name new_name    # Rename a file or directory
+  mv file_name /new/path/ # Move a file to a different directory
+  ```
+
+- **`touch`**: Create an empty file or update the timestamp of an existing file.
+
+  ```bash
+  touch new_file          # Create a new empty file
+  ```
+
+- **`find`**: Search for files and directories.
+
+  ```bash
+  find /path -name "filename"  # Search for files named 'filename' starting from /path
+  find . -type f -name "*.txt" # Find all text files in the current directory and subdirectories
+  ```
+
+- **`locate`**: Find files by name quickly.
+
+  ```bash
+  locate filename         # Find files by name using a pre-built index
+  ```
+
+- **`updatedb`**: Update the database used by `locate`.
+
+  ```bash
+  updatedb                # Update the locate database
+  ```
+
+### File Content and Text Processing
+
+- **`cat`**: Concatenate and display file content.
+
+  ```bash
+  cat file_name           # Display the content of the file
+  cat file1 file2         # Concatenate and display multiple files
+  ```
+
+- **`more`**: View file content page by page.
+
+  ```bash
+  more file_name          # View file content with pagination
+  ```
+
+- **`less`**: View file content with backward and forward navigation.
+
+  ```bash
+  less file_name          # View file content with advanced navigation
+  ```
+
+- **`head`**: Display the first part of a file.
+
+  ```bash
+  head file_name          # Show the first 10 lines of the file
+  head -n 20 file_name    # Show the first 20 lines of the file
+  ```
+
+- **`tail`**: Display the last part of a file.
+
+  ```bash
+  tail file_name          # Show the last 10 lines of the file
+  tail -n 20 file_name    # Show the last 20 lines of the file
+  ```
+
+- **`grep`**: Search for patterns in files.
+
+  ```bash
+  grep "pattern" file_name   # Search for 'pattern' in the file
+  grep -r "pattern" /path    # Recursively search for 'pattern' in the directory
+  ```
+
+- **`awk`**: Pattern scanning and processing language.
+
+  ```bash
+  awk '{print $1}' file_name  # Print the first column of the file
+  ```
+
+- **`sed`**: Stream editor for filtering and transforming text.
+
+  ```bash
+  sed 's/old/new/' file_name  # Replace 'old' with 'new' in the file
+  ```
+
+### System Information and Management
+
+- **`df`**: Report file system disk space usage.
+
+  ```bash
+  df -h                   # Display disk space usage in human-readable format
+  ```
+
+- **`du`**: Estimate file and directory space usage.
+
+  ```bash
+  du -h                   # Display directory size in human-readable format
+  du -sh /path/to/dir     # Display the total size of the directory
+  ```
+
+- **`top`**: Display tasks and system information interactively.
+
+  ```bash
+  top                     # View real-time system resource usage and running processes
+  ```
+
+- **`htop`**: An interactive process viewer (requires installation).
+
+  ```bash
+  htop                    # Enhanced version of top with more features
+  ```
+
+- **`ps`**: Report a snapshot of current processes.
+
+  ```bash
+  ps aux                  # Display detailed information about all running processes
+  ```
+
+- **`kill`**: Send a signal to a process (e.g., to terminate it).
+
+  ```bash
+  kill PID                 # Send the default signal (TERM) to the process with ID PID
+  kill -9 PID              # Force kill the process with ID PID
+  ```
+
+- **`chmod`**: Change file permissions.
+
+  ```bash
+  chmod 755 file_name      # Set read, write, and execute permissions for owner, and read and execute for others
+  ```
+
+- **`chown`**: Change file owner and group.
+
+  ```bash
+  chown user:group file_name  # Change owner and group of the file
+  ```
+
+- **`useradd`**: Add a new user.
+
+  ```bash
+  sudo useradd username    # Create a new user
+  ```
+
+- **`passwd`**: Change user password.
+
+  ```bash
+  passwd username         # Change the password for the specified user
+  ```
+
+### Network Commands
+
+- **`ping`**: Test network connectivity.
+
+  ```bash
+  ping hostname_or_ip    # Send ICMP ECHO_REQUEST to the specified host
+  ```
+
+- **`ifconfig`** or **`ip`**: Configure network interfaces (note: `ifconfig` is deprecated; use `ip`).
+
+  ```bash
+  ifconfig                # Display or configure network interfaces (deprecated)
+  ip a                    # Display IP addresses and network interfaces
+  ```
+
+- **`netstat`**: Network statistics and information.
+
+  ```bash
+  netstat -tuln           # Show listening ports and associated services
+  ```
+
+- **`ss`**: Utility to investigate sockets (alternative to `netstat`).
+
+  ```bash
+  ss -tuln                # Show listening sockets
+  ```
+
+- **`wget`**: Non-interactive network downloader.
+
+  ```bash
+  wget http://example.com/file  # Download file from the web
+  ```
+
+- **`curl`**: Transfer data from or to a server.
+
+  ```bash
+  curl -O http://example.com/file  # Download file from the web
+  ```
+
+### File Compression and Archiving
+
+- **`tar`**: Archive files.
+
+  ```bash
+  tar -cvf archive.tar file1 file2    # Create an archive (tarball) of files
+  tar -xvf archive.tar                # Extract files from a tarball
+  tar -cvzf archive.tar.gz file1 file2  # Create a compressed (gzip) tarball
+  tar -xvzf archive.tar.gz            # Extract files from a compressed tarball
+  ```
+
+- **`gzip`**: Compress files.
+
+  ```bash
+  gzip file_name           # Compress file_name into file_name.gz
+  gunzip file_name.gz      # Decompress file_name.gz
+  ```
+
+- **`bzip2`**: Compress files using bzip2.
+
+  ```bash
+  bzip2 file_name          # Compress file_name into file_name.bz2
+  bunzip2 file_name.bz2   # Decompress file_name.bz2
+  ```
+
+- **`zip`**: Package and compress files.
+
+  ```bash
+  zip archive.zip file1 file2   # Create a zip archive
+  unzip archive.zip             # Extract files from a zip archive
+  ```
+
+### System Monitoring and Management
+
+- **`uptime`**: Display system uptime and load average.
+
+  ```bash
+  uptime                  # Show how long the system has been running
+  ```
+
+- **`reboot`**: Reboot the system.
+
+  ```bash
+  sudo reboot             # Reboot the system
+  ```
+
+- **`shutdown`**: Shut down or reboot the system.
+
+  ```bash
+  sudo shutdown -h now    # Shut down the system immediately
+  sudo shutdown -r now    # Reboot
