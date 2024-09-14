@@ -17,3 +17,19 @@ git checkout dev
 git merge origin/master
 # Resolve any conflicts if necessary
 git push origin dev
+
+# Create Child Branch and push changes
+git fetch
+git checkout develop
+git checkout -b "code-change"
+# do changes
+git add .
+git commit -m ""
+# git push
+git push --set-upstream origin code-change
+git checkout develop
+git merge code-change
+git push origin develop
+git checkout master
+git merge origin develop
+git push origin master
