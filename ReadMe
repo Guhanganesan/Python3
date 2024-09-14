@@ -1,5 +1,13 @@
 # Python Examples
 
+# How to push dev code to master 
+
+cd path/to/your/repository
+git fetch origin
+git checkout master
+git merge dev
+# Resolve any conflicts if necessary
+git push origin master
 
 # Fetch Master Code to develop branch
 
